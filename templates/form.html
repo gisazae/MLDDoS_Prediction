@@ -1,0 +1,33 @@
+{% extends 'masterpage.html' %}  
+{% block contenido %} 
+        <h6 class="mt-4"><b>Paso 1: </b></h6>
+        <div class="w-50 p-3 container text-center" >
+        <form action="/algoritmo" method="post" class="mt-4" enctype="multipart/form-data">
+            <br>
+            <h6>¿Desea iniciar bajo el enfoque automático?</h6>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="demon" id="demonSi" value="1" required onchange="cambio()">
+                <label class="form-check-label" for="demonSi">
+                    Sí
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="demon" id="demonNo" value="0" required onchange="cambio()">
+                <label class="form-check-label" for="demonNo">
+                  No
+                </label>
+                <div id="elementos">
+                </div>
+              </div>
+                <select name="iface" id="select" class="form-control" class="text-center" required>
+                    <option value="" selected disabled hidden>Seleccione una interfaz de red</option>
+                    {% for data in iface_names %}
+                    <option value="{{ data }}">{{ data }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <script src="../static/manualAuto.js"></script>
+            <button type="submit" class="btn btn-success" id="normalizar">Iniciar captura</button>
+        </form>
+ 
+        {% endblock %}
